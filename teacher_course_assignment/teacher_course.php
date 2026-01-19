@@ -28,8 +28,10 @@ $courses = $courseModel->getAll();
     </div>
 
     <?php if (isset($_GET['error'])): ?>
+        <!-- show duplicate warning -->
         <?php if ($_GET['error'] === 'duplicate'): ?>
             <div class="alert alert-warning">This assignment already exists.</div>
+        <!-- show invalid section error     -->
         <?php elseif ($_GET['error'] === 'invalid'): ?>
             <div class="alert alert-danger">Invalid teacher or course selection.</div>
         <?php endif; ?>

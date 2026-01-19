@@ -3,10 +3,12 @@ require_once '../classes/TeacherCourse.php';
 $tc = new TeacherCourse();
 
 if (isset($_POST['assign_teacher'])) {
+    // get and validate input data
     $teacher_id = intval($_POST['teacher_id'] ?? 0);
     $course_id = intval($_POST['course_id'] ?? 0);
 
     if ($teacher_id > 0 && $course_id > 0) {
+        // attempt to assign teacher to course
         $res = $tc->assign($teacher_id, $course_id);
         if ($res) {
             header('Location: teacher_course.php');

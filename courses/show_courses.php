@@ -2,7 +2,7 @@
 require_once '../classes/Course.php';
 $course = new Course();
 $result = $course->getAll();
-$connection = $course->getConnection();
+// $connection = $course->getConnection();
 
 ?>
 

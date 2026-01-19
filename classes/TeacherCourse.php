@@ -4,19 +4,24 @@ require_once 'Database.php';
 class TeacherCourse extends Database {
 
     public function assign($teacher, $course) {
+
+    // check for existing assignment
         $check = mysqli_query(
             $this->conn,
             "SELECT * FROM teacher_courses
              WHERE teacher_id='$teacher' AND course_id='$course'"
         );
 
+        // prevent duplicate assignments
         if (mysqli_num_rows($check) == 0) {
+            // create new assignment
             return mysqli_query(
                 $this->conn,
                 "INSERT INTO teacher_courses (teacher_id,course_id)
                  VALUES ('$teacher','$course')"
             );
         }
+        // return false if assignment duplicate
         return false;
     }
 

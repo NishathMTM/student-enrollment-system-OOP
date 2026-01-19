@@ -52,6 +52,7 @@ if (isset($_POST['update_course'])) {
 <div class="container mt-5">
     <h2 class="mb-4">Edit Course</h2>
 
+    <!-- error diplay section -->
     <?php if (!empty($errors)): ?>
         <div class="alert alert-danger">
             <ul class="mb-0">

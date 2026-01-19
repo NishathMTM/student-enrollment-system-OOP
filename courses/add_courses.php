@@ -6,7 +6,9 @@ $errors = [];
 $course_name = '';
 $description = '';
 
+// check if form is submitted
 if (isset($_POST['save_course'])) {
+    // get and validate input data
     $course_name = trim($_POST['course_name'] ?? '');
     $description = trim($_POST['description'] ?? '');
 
@@ -14,6 +16,7 @@ if (isset($_POST['save_course'])) {
         $errors[] = 'Course name is required.';
     }
 
+    // if no errors, add the course and save to database
     if (empty($errors)) {
         $res = $course->add($course_name, $description);
         if ($res) {
@@ -39,10 +42,18 @@ if (isset($_POST['save_course'])) {
 <div class="container mt-5">
     <h2 class="mb-4">Add Course</h2>
 
+    <!-- check if error exists -->
     <?php if (!empty($errors)): ?>
         <div class="alert alert-danger">
             <ul class="mb-0">
+                <!-- array iteration process -->
                 <?php foreach ($errors as $err): ?>
+                    <!-- $errors = [
+                        0 => 'Course name is required',
+                        1 => 'Description too short'
+                    ]; -->
+
+                    <!-- List Item with Output Encoding -->
                     <li><?php echo htmlspecialchars($err); ?></li>
                 <?php endforeach; ?>
             </ul>
